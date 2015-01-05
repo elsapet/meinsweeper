@@ -25,9 +25,9 @@ public class Meinsweeper extends JFrame
 	private JPanel grid = null;	
 	private JLabel displayMinesRemaining = new JLabel();
 	
-	private JRadioButton easy = new JRadioButton("leicht / easy");
-	private JRadioButton medium = new JRadioButton("mittel / medium");
-	private JRadioButton hard = new JRadioButton("schwierig / hard");
+	private JRadioButton easy = new JRadioButton("easy");
+	private JRadioButton medium = new JRadioButton("medium");
+	private JRadioButton hard = new JRadioButton("hard");
 
 	private ImageIcon coal = new ImageIcon("assets/coal.gif");
 	private ImageIcon sweep = new ImageIcon("assets/chimney_sweep.gif");
@@ -146,7 +146,7 @@ public class Meinsweeper extends JFrame
 										if (flagCount == numMines) // number of flags on grid same as number of "mines"
 											if (checkIfWin())
 												JOptionPane.showMessageDialog(Meinsweeper.this,
-														"Herzlichen Glückwunsch! Congratulations you win!\nReset to play again!",
+														"Congratulations you win!\nReset to play again!",
 														"Win!", JOptionPane.PLAIN_MESSAGE);
 									}	
 								}
@@ -235,7 +235,7 @@ public class Meinsweeper extends JFrame
 			help.add(middleClick2);
 			
 			JOptionPane.showMessageDialog(Meinsweeper.this,help,
-					"Helfen / Help", JOptionPane.PLAIN_MESSAGE);			
+					"Help", JOptionPane.PLAIN_MESSAGE);			
 		}		
 	}
 
@@ -260,11 +260,11 @@ public class Meinsweeper extends JFrame
 		@Override
 		public void windowClosing(WindowEvent e) 
 		{			
-			Object[] options = {"Ja / Yes", "Nein / No"};
+			Object[] options = {"Yes", "No"};
 			int reply = JOptionPane.showOptionDialog(
 				    Meinsweeper.this,
 				    "Do you really want to exit?",
-				    "Verlassen?",
+					"Exit?",
 				    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, chimneySweep, options, options[0]);
 			if (reply == JOptionPane.YES_OPTION) // if user clicks yes to exit
 				System.exit(0);				
@@ -390,9 +390,9 @@ public class Meinsweeper extends JFrame
 		JPanel top = new JPanel();
 		top.setLayout(new BoxLayout(top, BoxLayout.Y_AXIS));
 		
-		JLabel heading = new JLabel("Willkommen! Welcome to Mein Sweeper!");
+		JLabel heading = new JLabel("Welcome to Mein Sweeper!");
 		heading.setBackground(Color.GRAY);
-		JLabel objective = new JLabel("You are a hard-working German chimney sweep. It is your mission to navigate ");
+		JLabel objective = new JLabel("You are a hard-working chimney sweep. It is your mission to navigate ");
 		JLabel objective2 = new JLabel("a path through the chimney. Use logic and guess work to avoid the coals.");
 		
 		top.add(heading);
@@ -438,7 +438,7 @@ public class Meinsweeper extends JFrame
 		easy.setSelected(true);
 		
 		JButton reset = new JButton("reset");		
-		JButton help = new JButton("helfen / help");
+		JButton help = new JButton("help");
 		
 		reset.addActionListener(new ResetButton());
 		help.addActionListener(new HelpButton());
@@ -610,7 +610,7 @@ public class Meinsweeper extends JFrame
 					cells[i][j].ms.setIcon(coal);
 					cells[i][j].ms.setBackground(Color.GRAY);
 				}
-		JOptionPane.showMessageDialog(Meinsweeper.this,"Tut mir leid! Sorry, you lose!\nReset to try again.", 
+		JOptionPane.showMessageDialog(Meinsweeper.this,"Sorry, you lose!\nReset to try again.", 
 				"Game Over!", JOptionPane.PLAIN_MESSAGE);
 	}
 	
